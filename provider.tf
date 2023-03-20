@@ -1,4 +1,5 @@
 provider "google" {
+  credentials = "key.json"
 }
 
 terraform {
