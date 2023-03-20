@@ -1,10 +1,10 @@
 provider "google" {
-  credentials = "organistation-test-335d12c5a6c6.json"
+  credentials = "three-tier-app-main-f-49eb9911a593.json"
 }
 
 terraform {
   backend "gcs" {
-    bucket = "felo-state-backend"
+    bucket = "three-tier-app-tf-backend"
     prefix = "state/"
   }
 }

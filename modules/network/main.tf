@@ -21,6 +21,9 @@ resource "google_compute_network" "dynamic_vpc" {
 }
 
 resource "google_compute_subnetwork" "dynamic_subnetwork" {
+  depends_on = [
+    google_compute_network.dynamic_vpc
+  ]
   for_each = var.dynamic_subnet_config
 
   ip_cidr_range = each.value.ip_cidr_range
