@@ -23,6 +23,8 @@ jobs:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
       uses: actions/checkout@v3
+
+    #authenticate using the google github actions tool and workload identity  
     - name: Authenticate to Google Cloud
       uses: google-github-actions/auth@v1
       with:
