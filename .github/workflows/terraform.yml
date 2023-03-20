@@ -6,6 +6,7 @@ on:
   pull_request:
 
 permissions:
+  issues: write
   contents: read
 
 jobs:
@@ -47,7 +48,7 @@ jobs:
     - name: approval 
       uses: trstringer/manual-approval@v1.9.0
       with:
-        github_token: ${{secrets.GITHUB_TOKEN}}
+        secret: ${{secrets.GITHUB_TOKEN}}
         approvers: snek-git
         exclude-workflow-initiator-as-approver: false
 
