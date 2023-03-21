@@ -5,7 +5,7 @@ resource "google_sql_database_instance" "main" {
   database_version    = var.sql_config.database_version
   deletion_protection = var.sql_config.deletion_protection
   settings {
-    tier                  = var.settings.tier
+    tier                  = var.sql_settings.tier
     disk_autoresize       = var.sql_settings.disk_autoresize
     disk_autoresize_limit = var.sql_settings.disk_autoresize_limit
     disk_size             = var.sql_settings.disk_size
@@ -13,7 +13,7 @@ resource "google_sql_database_instance" "main" {
     ip_configuration {
       ipv4_enabled    = var.sql_ip_config.ipv4_enabled
       private_network = var.sql_ip_config.private_network
-      require_ssl     = var.ip_config.require_ssl
+      require_ssl     = var.sql_ip_config.require_ssl
     }
   }
 }
