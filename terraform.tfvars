@@ -78,7 +78,7 @@ network_config = {
   name                    = "three-tier-vpc"
   project_id              = "felo-task-host-project" # Change to your project ID
   description             = "Host VPC"
-  auto_create_subnetworks = false,
+  auto_create_subnetworks = false
   routing_mode            = "REGIONAL"
   mtu                     = 1460
 }
@@ -104,28 +104,37 @@ dynamic_subnet_config = {
 # ------------------------------------------
 
 sql_config = {
-  database_version = "MYSQL_8_0"
+  database_version    = "MYSQL_8_0"
   deletion_protection = false
-  name = "threetier-mysql-db"
-  region = "us-east1"
+  name                = "threetier-mysql-instance"
+  region              = "us-east1"
+  db_name             = "demo-db"
+
 }
 
 sql_ip_config = {
   # allocated_ip_range = "value"
-  ipv4_enabled = false
+  ipv4_enabled    = true
   private_network = "projects/felo-task-host-project/global/networks/three-tier-vpc"
-  require_ssl = false
+  require_ssl     = false
 }
 
 sql_settings = {
-  disk_autoresize = false
+  disk_autoresize       = false
   disk_autoresize_limit = 1
-  disk_size = 10
-  disk_type = "PD_SSD"
-  tier = "db-f1-micro"
+  disk_size             = 10
+  disk_type             = "PD_SSD"
+  tier                  = "db-f1-micro"
 }
 
 sql_users = {
-  name ="root"
+  name     = "root"
   password = "feloimastun"
+}
+
+sql_private_address = {
+  address_type  = "INTERNAL"
+  name          = "threetier-mysql-db-private-ip"
+  prefix_length = 16
+  purpose       = "VPC_PEERING"
 }

@@ -81,5 +81,6 @@ module "sql" {
   sql_ip_config   = var.sql_ip_config
   sql_settings    = var.sql_settings
   sql_users       = var.sql_users
+  sql_private_address = var.sql_private_address
 }
 

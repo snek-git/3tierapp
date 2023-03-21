@@ -88,7 +88,8 @@ variable "sql_config" {
     name                = string
     database_version    = string
     region              = string
-    deletion_protection = bool
+    deletion_protection = bool    
+    db_name               = string
   })
 }
 
@@ -105,9 +106,9 @@ variable "sql_settings" {
 
 variable "sql_ip_config" {
   type = object({
-    ipv4_enabled       = bool
-    private_network    = string
-    require_ssl        = bool
+    ipv4_enabled    = bool
+    private_network = string
+    require_ssl     = bool
     # allocated_ip_range = string
 
   })
@@ -117,6 +118,16 @@ variable "sql_users" {
   type = object({
     name     = string
     password = string
-    host     = string
+    # host     = string
+  })
+}
+
+variable "sql_private_address" {
+  description = "The private IP address of the SQL instance"
+  type = object({
+    name          = string
+    purpose       = string
+    address_type  = string
+    prefix_length = number
   })
 }
