@@ -108,7 +108,7 @@ variable "sql_ip_config" {
     ipv4_enabled       = bool
     private_network    = string
     require_ssl        = bool
-    allocated_ip_range = string
+    # allocated_ip_range = string
 
   })
 }

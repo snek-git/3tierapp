@@ -125,7 +125,7 @@ sql_settings = {
   tier = "db-f1-micro"
 }
 
-sql_users = [ {
-  name = ""
+sql_users = {
+  name ="root"
   password = "feloimastun"
-} ]
+}
