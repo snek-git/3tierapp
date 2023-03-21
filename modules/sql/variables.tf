@@ -35,8 +35,8 @@ variable "sql_ip_config" {
 }
 
 variable "sql_users" {
-  type = list(object({
+  type = object({
     name     = string
     password = string
-  }))
+  })
 }

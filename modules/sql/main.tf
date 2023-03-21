@@ -19,9 +19,9 @@ resource "google_sql_database_instance" "main" {
 }
 
 resource "google_sql_user" "users" {
-  for_each = var.sql_users
-  name     = each.var.sql_users.name
-  password = each.var.sql_users.password
+  
+  name     = var.sql_users.name
+  password = var.sql_users.password
   # host   = var.users.host
   instance = google_sql_database_instance.main.name
 }
