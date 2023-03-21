@@ -77,3 +77,46 @@ variable "dynamic_subnet_config" {
     ip_cidr_range = string
   }))
 }
+
+# ------------------------------------------
+# SQL MODULE
+# ------------------------------------------
+
+variable "sql_config" {
+  description = "values for the SQL instance attributes"
+  type = object({
+    name                = string
+    database_version    = string
+    region              = string
+    deletion_protection = bool
+  })
+}
+
+variable "sql_settings" {
+  description = "values for the SQL instance settings attribute"
+  type = object({
+    tier                  = string
+    disk_autoresize       = bool
+    disk_autoresize_limit = number
+    disk_size             = number
+    disk_type             = string
+  })
+}
+
+variable "sql_ip_config" {
+  type = object({
+    ipv4_enabled       = bool
+    private_network    = string
+    require_ssl        = bool
+    allocated_ip_range = string
+
+  })
+}
+
+variable "sql_users" {
+  type = list(object({
+    name     = string
+    password = string
+    host     = string
+  }))
+}

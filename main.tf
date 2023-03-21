@@ -65,3 +65,21 @@ module "network" {
   host_project_id       = var.host_project_id
   service_project_ids   = var.service_project_ids
 }
+
+# ------------------------------------------
+# SQL MODULE
+# ------------------------------------------
+
+module "sql" {
+  depends_on = [
+    module.network
+  ]
+  source = "./modules/sql"
+
+  host_project_id = var.host_project_id
+  sql_config      = var.sql_config
+  sql_ip_config   = var.sql_ip_config
+  sql_settings    = var.sql_settings
+  sql_users       = var.sql_users
+}
+

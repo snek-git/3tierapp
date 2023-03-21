@@ -98,3 +98,34 @@ dynamic_subnet_config = {
   }
 
 }
+
+# ------------------------------------------
+# SQL MODULE
+# ------------------------------------------
+
+sql_config = {
+  database_version = "MYSQL_8_0"
+  deletion_protection = false
+  name = "threetier-mysql-db"
+  region = "us-east1"
+}
+
+sql_ip_config = {
+  # allocated_ip_range = "value"
+  ipv4_enabled = false
+  private_network = "projects/felo-task-host-project/global/networks/three-tier-vpc"
+  require_ssl = false
+}
+
+sql_settings = {
+  disk_autoresize = false
+  disk_autoresize_limit = 1
+  disk_size = 10
+  disk_type = "PD_SSD"
+  tier = "db-f1-micro"
+}
+
+sql_users = [ {
+  name = ""
+  password = "feloimastun"
+} ]
