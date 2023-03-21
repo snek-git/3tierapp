@@ -6,13 +6,13 @@ variable "terraform_service_account_project_id" {
   type = string
 }
 variable "terraform_service_account_id" {
-    type = string
+  type = string
 }
 variable "terraform_service_account_display_name" {
-    type = string
+  type = string
 }
 variable "terraform_service_account_iam_roles" {
-    type = list(string)
+  type = list(string)
 }
 
 # ------------------------------------------

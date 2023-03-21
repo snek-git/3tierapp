@@ -7,8 +7,8 @@ data "google_organization" "organisation" {
 # ------------------------------------------
 
 module "terraform_service_account" {
-  source = "./modules/terraform-sa-module"
-  project_id                             = var.terraform_service_account_project_id
+  source     = "./modules/terraform-sa-module"
+  project_id = var.terraform_service_account_project_id
 
   terraform_service_account_id           = var.terraform_service_account_id
   terraform_service_account_display_name = var.terraform_service_account_display_name
@@ -22,7 +22,7 @@ module "terraform_service_account" {
 
 module "folders" {
   depends_on = [
-      module.terraform_service_account
+    module.terraform_service_account
   ]
   source     = "./modules/folders/"
   folder_map = var.folder_configuration

@@ -6,10 +6,10 @@ resource "google_service_account" "terraform_service_account" {
 }
 
 resource "google_organization_iam_member" "organization" {
-  org_id  = var.organization_id
+  org_id = var.organization_id
 
   for_each = toset(var.organization_roles)
-  role    = each.key
+  role     = each.key
 
-  member  = "serviceAccount:${google_service_account.terraform_service_account.email}"
+  member = "serviceAccount:${google_service_account.terraform_service_account.email}"
 }

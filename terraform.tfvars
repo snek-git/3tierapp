@@ -4,8 +4,8 @@ org_domain = "snek.page" # Change to your domain
 # TERRAFORM SERVICE ACCOUNT MODULE
 # ------------------------------------------
 
-terraform_service_account_project_id = "three-tier-app-main-f" # Change to your project ID
-terraform_service_account_id = "terraform-service-account" # Change to your service account ID
+terraform_service_account_project_id   = "three-tier-app-main-f"     # Change to your project ID
+terraform_service_account_id           = "terraform-service-account" # Change to your service account ID
 terraform_service_account_display_name = "Terraform Service Account" # Change to your service account display name
 terraform_service_account_iam_roles = [
   "roles/resourcemanager.projectCreator",
@@ -16,8 +16,8 @@ terraform_service_account_iam_roles = [
   "roles/serviceusage.serviceUsageAdmin",
   "roles/compute.admin",
   "roles/compute.networkAdmin",
-  "roles/compute.xpnAdmin", 
-  "roles/storage.objectAdmin", 
+  "roles/compute.xpnAdmin",
+  "roles/storage.objectAdmin",
   "roles/compute.securityAdmin"
 ]
 
@@ -40,14 +40,14 @@ dynamic_project_config = {
     folder_name         = "3tier",
     billing_account     = "013BBA-BA592C-7635DE", # Change to your billing account
     auto_create_network = false
-    services            = [
-      "compute.googleapis.com", 
+    services = [
+      "compute.googleapis.com",
       "cloudbilling.googleapis.com",
       "iam.googleapis.com",
       "cloudresourcemanager.googleapis.com",
       "iap.googleapis.com",
       "serviceusage.googleapis.com"
-      ]
+    ]
   }
 
   "felo-task-service-project" = { # Change to your project ID
@@ -55,8 +55,8 @@ dynamic_project_config = {
     folder_name         = "3tier",
     billing_account     = "013BBA-BA592C-7635DE", # Change to your billing account
     auto_create_network = false
-    services            = [
-      "compute.googleapis.com", 
+    services = [
+      "compute.googleapis.com",
       "cloudbilling.googleapis.com",
       "iam.googleapis.com",
       "cloudresourcemanager.googleapis.com",
