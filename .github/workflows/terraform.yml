@@ -45,12 +45,12 @@ jobs:
     - name: Terraform Plan
       run: terraform plan -input=false
 
-    - name: approval 
-      uses: trstringer/manual-approval@v1.9.0
-      with:
-        secret: ${{secrets.GITHUB_TOKEN}}
-        approvers: snek-git
-        exclude-workflow-initiator-as-approver: false
+    # - name: approval 
+    #   uses: trstringer/manual-approval@v1.9.0
+    #   with:
+    #     secret: ${{secrets.GITHUB_TOKEN}}
+    #     approvers: snek-git
+    #     exclude-workflow-initiator-as-approver: false
 
       # On push to "main", build or change infrastructure according to Terraform configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
