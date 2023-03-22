@@ -138,3 +138,36 @@ sql_private_address = {
   prefix_length = 16
   purpose       = "VPC_PEERING"
 }
+
+# ------------------------------------------
+# COMPUTE MODULE
+# ------------------------------------------
+
+vm_config = {
+  machine_type   = "f1-micro"
+  name           = "postgres-vm"
+  startup_script = "apt-get update && apt-get install -y postgresql postgresql-contrib  && service postgresql start && sudo -u postgres psql -c \"CREATE DATABASE demo_db;\" && sudo -u postgres psql -c \"CREATE USER felo WITH PASSWORD 'feloimastun';\" && sudo -u postgres psql -c \"GRANT ALL PRIVILEGES ON DATABASE demo_db TO felo;\"" # Change to your startup script
+  tags           = ["postgres-vm"]
+  zone           = "value"
+
+  network_interface = {
+    access_config = {
+      nat_ip       = "value"
+      network_tier = "value"
+    }
+    network    = "three-tier-vpc"
+    subnetwork = "vmsubnet"
+  }
+
+  boot_disk = {
+    initialize_params = {
+      image = "debian-cloud/debian-11"
+      size  = 20
+    }
+  }
+
+  service_account = {
+    scopes = ["cloud-platform"]
+  }
+
+}

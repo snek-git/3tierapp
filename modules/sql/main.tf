@@ -22,7 +22,7 @@ resource "google_sql_database_instance" "main" {
 }
 
 resource "google_sql_user" "users" {
-
+  project  = var.host_project_id
   name     = var.sql_users.name
   password = var.sql_users.password
   # host   = var.users.host
@@ -30,13 +30,13 @@ resource "google_sql_user" "users" {
 }
 
 resource "google_sql_database" "database" {
+  project  = var.host_project_id
   name     = var.sql_config.db_name
   instance = google_sql_database_instance.main.name
 }
 
 resource "google_compute_global_address" "private_ip_address" {
-  provider = google-beta
-
+  project       = var.host_project_id
   name          = var.sql_private_address.name
   purpose       = var.sql_private_address.purpose
   address_type  = var.sql_private_address.address_type
@@ -45,8 +45,6 @@ resource "google_compute_global_address" "private_ip_address" {
 }
 
 resource "google_service_networking_connection" "private_vpc_connection" {
-  provider = google-beta
-
   network                 = var.sql_ip_config.private_network
   service                 = "servicenetworking.googleapis.com"
   reserved_peering_ranges = [google_compute_global_address.private_ip_address.name]

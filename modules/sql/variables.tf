@@ -10,7 +10,7 @@ variable "sql_config" {
     database_version    = string
     region              = string
     deletion_protection = bool
-    db_name               = string
+    db_name             = string
 
   })
 }
@@ -32,7 +32,6 @@ variable "sql_ip_config" {
     private_network = string
     require_ssl     = bool
     # allocated_ip_range = string
-
   })
 }
 

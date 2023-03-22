@@ -76,11 +76,26 @@ module "sql" {
   ]
   source = "./modules/sql"
 
-  host_project_id = var.host_project_id
-  sql_config      = var.sql_config
-  sql_ip_config   = var.sql_ip_config
-  sql_settings    = var.sql_settings
-  sql_users       = var.sql_users
+  host_project_id     = var.host_project_id
+  sql_config          = var.sql_config
+  sql_ip_config       = var.sql_ip_config
+  sql_settings        = var.sql_settings
+  sql_users           = var.sql_users
   sql_private_address = var.sql_private_address
 }
 
+
+
+# ------------------------------------------
+# COMPUTE MODULE
+# ------------------------------------------
+
+module "compute" {
+  depends_on = [
+    module.network
+  ]
+  source = "./modules/compute"
+
+  host_project_id = var.host_project_id
+  vm_config       = var.vm_config
+}
