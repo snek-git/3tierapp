@@ -19,12 +19,12 @@ resource "google_compute_instance" "default" {
   }
 
   network_interface {
-    network    = var.vm_config.network_interface.network
     subnetwork = var.vm_config.network_interface.subnetwork
-    # access_config {
+    subnetwork_project = var.host_project_id
+    access_config {
     #   nat_ip       = var.vm_config.network_interface.access_config.nat_ip
     #   network_tier = var.vm_config.network_interface.access_config.network_tier
-    # }
+    }
   }
 
   metadata_startup_script = var.vm_config.startup_script
