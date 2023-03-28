@@ -73,6 +73,7 @@ dynamic_project_config = {
 
 host_project_id     = "felo-task-host-project"      # Change to your project ID
 service_project_ids = ["felo-task-service-project"] # Change to your project ID
+service_project_id  = "felo-task-service-project"
 
 network_config = {
   name                    = "three-tier-vpc"
@@ -169,5 +170,57 @@ vm_config = {
   service_account = {
     scopes = ["cloud-platform"]
   }
+}
 
+# ------------------------------------------
+# GKE MODULE
+# ------------------------------------------
+
+node_pool_attributes = {
+  ip_allocation_policy = {
+    cluster_secondary_range_name  = "value"
+    services_secondary_range_name = "value"
+    cluster_ipv4_cidr_block       = "172.17.0.0/18"
+    services_ipv4_cidr_block      = "192.168.1.128/25"
+    network                       = "three-tier-vpc"
+    subnetwork                    = "k8subnet"
+  }
+  location = "us-east1"
+  name     = "threetier-gke-cluster-node-pool"
+  node_config = {
+    machine_type = "f1-micro"
+    oauth_scopes = ["https://www.googleapis.com/auth/cloud-platform"]
+    preemptible  = false
+  }
+  node_count = 1
+}
+
+cluster_config = {
+  initial_node_count       = 1
+  location                 = "us-east1"
+  name                     = "three-tier-gke-cluster"
+  remove_default_node_pool = false
+}
+
+# node_config = {
+#   disk_size_gb = 10
+#   disk_type = "pd-standard"
+#   image_type = "COS"
+#   labels = {}
+#   local_ssd_count = 0
+#   machine_type = "f1-micro"
+#   metadata = {}
+#   min_cpu_platform = "Intel Haswell"
+#   oauth_scopes = [
+#     "https://www.googleapis.com/auth/cloud-platform"
+#   ]
+#   preemptible = false
+#   service_account = "default"
+#   tags = []
+#   taint = []
+# }
+
+gke_service_account = {
+  account_id   = "gke-service-account"
+  display_name = "GKE Service Account"
 }

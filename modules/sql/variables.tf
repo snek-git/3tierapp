@@ -1,3 +1,8 @@
+variable "service_project_id" {
+  description = "The project ID where the network will be created"
+  type        = string
+}
+
 variable "host_project_id" {
   description = "The project ID where the network will be created"
   type        = string

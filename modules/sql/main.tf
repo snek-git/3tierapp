@@ -1,5 +1,5 @@
 resource "google_sql_database_instance" "main" {
-  project             = var.host_project_id
+  project             = var.service_project_id
   name                = var.sql_config.name
   region              = var.sql_config.region
   database_version    = var.sql_config.database_version
@@ -22,7 +22,7 @@ resource "google_sql_database_instance" "main" {
 }
 
 resource "google_sql_user" "users" {
-  project  = var.host_project_id
+  project  = var.service_project_id
   name     = var.sql_users.name
   password = var.sql_users.password
   # host   = var.users.host
@@ -30,7 +30,7 @@ resource "google_sql_user" "users" {
 }
 
 resource "google_sql_database" "database" {
-  project  = var.host_project_id
+  project  = var.service_project_id
   name     = var.sql_config.db_name
   instance = google_sql_database_instance.main.name
 }

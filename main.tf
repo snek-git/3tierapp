@@ -76,6 +76,7 @@ module "sql" {
   ]
   source = "./modules/sql"
 
+  service_project_id  = var.service_project_id
   host_project_id     = var.host_project_id
   sql_config          = var.sql_config
   sql_ip_config       = var.sql_ip_config
@@ -96,6 +97,28 @@ module "compute" {
   ]
   source = "./modules/compute"
 
-  host_project_id = var.host_project_id
-  vm_config       = var.vm_config
+  host_project_id    = var.host_project_id
+  service_project_id = var.service_project_id
+  vm_config          = var.vm_config
 }
+
+
+# ------------------------------------------
+# GKE MODULE
+# ------------------------------------------
+
+module "gke" {
+  depends_on = [
+    module.network
+  ]
+  source = "./modules/gke"
+
+  # host_project_id    = var.host_project_id
+  service_project_id   = var.service_project_id
+  node_pool_attributes = var.node_pool_attributes
+  cluster_config       = var.cluster_config
+  gke_service_account  = var.gke_service_account
+  vpc_self_link        = module.network.self_link
+  subnetwork_self_link = module.network.subnetwork_self_link
+}
+
