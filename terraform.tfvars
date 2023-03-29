@@ -178,8 +178,8 @@ vm_config = {
 
 node_pool_attributes = {
   ip_allocation_policy = {
-    cluster_secondary_range_name  = "value"
-    services_secondary_range_name = "value"
+    cluster_secondary_range_name  = "pod-range"
+    services_secondary_range_name = "service-range"
     cluster_ipv4_cidr_block       = "172.17.0.0/18"
     services_ipv4_cidr_block      = "192.168.1.128/25"
     network                       = "three-tier-vpc"
@@ -199,7 +199,7 @@ cluster_config = {
   initial_node_count       = 1
   location                 = "us-east1"
   name                     = "three-tier-gke-cluster"
-  remove_default_node_pool = false
+  remove_default_node_pool = true
 }
 
 # node_config = {
