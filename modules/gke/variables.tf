@@ -45,7 +45,7 @@ variable "host_project_id" {
   description = "The project ID where the network will be created"
   type        = string
 }
-  
+
 
 variable "vpc_self_link" {
   description = "The self link of the VPC"

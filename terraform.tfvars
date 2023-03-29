@@ -188,7 +188,7 @@ node_pool_attributes = {
   location = "us-east1"
   name     = "threetier-gke-cluster-node-pool"
   node_config = {
-    machine_type = "f1-micro"
+    machine_type = "n1-standard-2"
     oauth_scopes = ["https://www.googleapis.com/auth/cloud-platform"]
     preemptible  = false
   }

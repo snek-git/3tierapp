@@ -113,7 +113,7 @@ module "gke" {
   ]
   source = "./modules/gke"
 
-  host_project_id    = var.host_project_id
+  host_project_id      = var.host_project_id
   service_project_id   = var.service_project_id
   node_pool_attributes = var.node_pool_attributes
   cluster_config       = var.cluster_config

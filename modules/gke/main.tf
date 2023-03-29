@@ -4,7 +4,7 @@
 # }
 
 resource "google_container_node_pool" "main_nodes" {
-  project = var.host_project_id
+  project    = var.service_project_id
 
   name       = var.node_pool_attributes.name
   location   = var.node_pool_attributes.location
@@ -12,11 +12,8 @@ resource "google_container_node_pool" "main_nodes" {
   node_count = var.node_pool_attributes.node_count
 
 
- 
-
-
   node_config {
-    disk_size_gb = 20
+    disk_size_gb = 10
     preemptible  = var.node_pool_attributes.node_config.preemptible
     machine_type = var.node_pool_attributes.node_config.machine_type
 
@@ -36,8 +33,6 @@ resource "google_container_cluster" "main" {
   node_config {
     disk_size_gb = 20
   }
-
-  
 
   ip_allocation_policy {
     # cluster_ipv4_cidr_block = var.node_pool_attributes.ip_allocation_policy.cluster_ipv4_cidr_block
