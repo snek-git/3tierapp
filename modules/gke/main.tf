@@ -4,7 +4,7 @@
 # }
 
 resource "google_container_node_pool" "main_nodes" {
-  project    = var.service_project_id
+  project = var.service_project_id
 
   name       = var.node_pool_attributes.name
   location   = var.node_pool_attributes.location
@@ -46,5 +46,5 @@ resource "google_container_cluster" "main" {
   # node pool and immediately delete it.
   # service_account             = google_service_account.default.email
   remove_default_node_pool = var.cluster_config.remove_default_node_pool
-  initial_node_count        = var.cluster_config.initial_node_count
+  initial_node_count       = var.cluster_config.initial_node_count
 }
