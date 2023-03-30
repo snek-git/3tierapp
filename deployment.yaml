@@ -12,10 +12,10 @@ spec:
   template:
     metadata:
       labels:
-        app: nginx-2
+        app: nginx
     spec:
       containers:
-      - name: nginx-test
+      - name: nginx-container-test
         image: gcr.io/felo-task-service-project/gke-test-nginx-0.1
         ports:
         - containerPort: 80
