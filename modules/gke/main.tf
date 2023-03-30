@@ -31,7 +31,7 @@ resource "google_container_cluster" "main" {
   subnetwork = var.subnetwork_self_link
 
   node_config {
-    disk_size_gb = 20
+    disk_size_gb = 10
   }
 
   ip_allocation_policy {
