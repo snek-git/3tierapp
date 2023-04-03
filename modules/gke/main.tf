@@ -13,7 +13,7 @@ resource "google_container_node_pool" "main_nodes" {
 
 
   node_config {
-    disk_size_gb = 10
+    disk_size_gb = 50
     preemptible  = var.node_pool_attributes.node_config.preemptible
     machine_type = var.node_pool_attributes.node_config.machine_type
 
@@ -31,7 +31,7 @@ resource "google_container_cluster" "main" {
   subnetwork = var.subnetwork_self_link
 
   node_config {
-    disk_size_gb = 10
+    disk_size_gb = 50
   }
 
   ip_allocation_policy {
