@@ -26,7 +26,7 @@ resource "google_container_node_pool" "main_nodes" {
 resource "google_container_node_pool" "secondary_node_pool" {
   project = var.service_project_id
 
-  name       = pool-2
+  name       = "pool-2"
   location   = var.node_pool_attributes.location
   cluster    = google_container_cluster.main.name
   node_count = var.node_pool_attributes.node_count
