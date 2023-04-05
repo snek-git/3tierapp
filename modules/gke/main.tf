@@ -29,7 +29,7 @@ resource "google_container_node_pool" "secondary_node_pool" {
   name       = "pool-2"
   location   = var.node_pool_attributes.location
   cluster    = google_container_cluster.main.name
-  node_count = var.node_pool_attributes.node_count
+  node_count = 2
 
 
   node_config {
