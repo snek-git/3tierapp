@@ -23,6 +23,26 @@ resource "google_container_node_pool" "main_nodes" {
   }
 }
 
+resource "google_container_node_pool" "secondary_node_pool" {
+  project = var.service_project_id
+
+  name       = pool-2
+  location   = var.node_pool_attributes.location
+  cluster    = google_container_cluster.main.name
+  node_count = var.node_pool_attributes.node_count
+
+
+  node_config {
+    disk_size_gb = 50
+    preemptible  = var.node_pool_attributes.node_config.preemptible
+    machine_type = var.node_pool_attributes.node_config.machine_type
+
+    # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
+    # service_account = google_service_account.default.email
+    oauth_scopes = var.node_pool_attributes.node_config.oauth_scopes
+  }
+}
+
 resource "google_container_cluster" "main" {
   name       = var.cluster_config.name
   location   = var.cluster_config.location
