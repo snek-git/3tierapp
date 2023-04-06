@@ -1,7 +1,7 @@
 provider "google" {
   region = "us-east1"
   zone   = "us-east1-d"
-  credentials = "davdav-sa.json"
+  # credentials = "davdav-sa.json"
 }
 
 terraform {
