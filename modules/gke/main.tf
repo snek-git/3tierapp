@@ -50,6 +50,7 @@ resource "google_container_cluster" "main" {
   network    = var.vpc_self_link
   subnetwork = var.subnetwork_self_link
 
+
   node_config {
     disk_size_gb = 50
   }
@@ -59,6 +60,11 @@ resource "google_container_cluster" "main" {
     cluster_secondary_range_name = var.node_pool_attributes.ip_allocation_policy.cluster_secondary_range_name
     # services_ipv4_cidr_block = var.node_pool_attributes.ip_allocation_policy.services_ipv4_cidr_block
     services_secondary_range_name = var.node_pool_attributes.ip_allocation_policy.services_secondary_range_name
+  }
+
+  private_cluster_config{
+    enable_private_nodes=true
+    master_ipv4_cidr_block = "172.16.2.0/28"
   }
 
   # We can't create a cluster with no node pool defined, but we want to only use

@@ -1,4 +1,4 @@
-org_domain = "snek.page" # Change to your domain
+org_domain = "organistation.de" # Change to your domain
 
 # ------------------------------------------
 # TERRAFORM SERVICE ACCOUNT MODULE
@@ -35,8 +35,8 @@ folder_configuration = {
 
 dynamic_project_config = {
 
-  "felo-task-host-project" = { # Change to your project ID
-    name                = "felo-task-host-project",
+  "dav-test-379413" = { # Change to your project ID
+    name                = "dav-test-379413",
     folder_name         = "3tier",
     billing_account     = "013BBA-BA592C-7635DE", # Change to your billing account
     auto_create_network = false
@@ -50,8 +50,8 @@ dynamic_project_config = {
     ]
   }
 
-  "felo-task-service-project" = { # Change to your project ID
-    name                = "felo-task-service-project",
+  "davdav" = { # Change to your project ID
+    name                = "davdav",
     folder_name         = "3tier",
     billing_account     = "013BBA-BA592C-7635DE", # Change to your billing account
     auto_create_network = false
@@ -71,13 +71,13 @@ dynamic_project_config = {
 # NETWORK MODULE
 # ------------------------------------------
 
-host_project_id     = "felo-task-host-project"      # Change to your project ID
-service_project_ids = ["felo-task-service-project"] # Change to your project ID
-service_project_id  = "felo-task-service-project"
+host_project_id     = "dav-test-379413"      # Change to your project ID
+service_project_ids = ["davdav"] # Change to your project ID
+service_project_id  = "davdav"
 
 network_config = {
   name                    = "three-tier-vpc"
-  project_id              = "felo-task-host-project" # Change to your project ID
+  project_id              = "dav-test-379413" # Change to your project ID
   description             = "Host VPC"
   auto_create_subnetworks = false
   routing_mode            = "REGIONAL"
@@ -87,13 +87,13 @@ network_config = {
 dynamic_subnet_config = {
   "vmsubnet" = {
     network       = "three-tier-vpc"
-    project_id    = "felo-task-host-project" # Change to your project ID
+    project_id    = "dav-test-379413" # Change to your project ID
     ip_cidr_range = "10.0.0.96/27"
     region        = "us-east1"
   }
   "k8subnet" = {
     network       = "three-tier-vpc"
-    project_id    = "felo-task-host-project" # Change to your project ID
+    project_id    = "dav-test-379413" # Change to your project ID
     ip_cidr_range = "10.0.4.0/24"
     region        = "us-east1"
   }
@@ -116,7 +116,7 @@ sql_config = {
 sql_ip_config = {
   # allocated_ip_range = "value"
   ipv4_enabled    = true
-  private_network = "projects/felo-task-host-project/global/networks/three-tier-vpc"
+  private_network = "projects/dav-test-379413/global/networks/three-tier-vpc"
   require_ssl     = false
 }
 

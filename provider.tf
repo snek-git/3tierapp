@@ -1,11 +1,12 @@
 provider "google" {
   region = "us-east1"
   zone   = "us-east1-d"
+  credentials = "davdav-sa.json"
 }
 
 terraform {
   backend "gcs" {
-    bucket = "three-tier-app-tf-backend"
-    prefix = "state/"
+    bucket = "tfstate-3-tier-application"
+    prefix = "felostate/"
   }
 }
